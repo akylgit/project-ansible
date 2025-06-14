@@ -1,0 +1,9 @@
+# Ignore Ansible vault password file
+vault.pass
+
+# Optional: ignore other sensitive or unnecessary files
+*.retry
+*.log
+*.pyc
+__pycache__/
+vault.pass

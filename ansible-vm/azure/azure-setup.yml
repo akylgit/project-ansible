@@ -1,0 +1,39 @@
+---
+- name: Install basic packages and services on Azure VM
+  hosts: azure
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - nginx
+          - docker.io
+          - python3
+          - wget
+          - curl
+        state: present
+
+    - name: Enable and start nginx
+      systemd:
+        name: nginx
+        enabled: true
+        state: started
+
+    - name: Enable and start docker
+      systemd:
+        name: docker
+        enabled: true
+        state: started
+
+    - name: Add vagrant user to docker group (optional, for local user testing)
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+        state: present
+

@@ -1,0 +1,20 @@
+---
+- name: Install and Configure Node Exporter
+  hosts: all  # Change this to your group name if needed
+  become: yes
+
+  tasks:
+    - name: Create directory for exporter
+      file:
+        path: /opt/exporter
+        state: directory
+        mode: '0755'
+
+    - name: Copy install_exporter.sh to remote nodes
+      copy:
+        src: exporter/install_exporter.sh
+        dest: /opt/exporter/install_exporter.sh
+        mode: '0755'
+
+    - name: Run the Node Exporter installation script
+      command: /opt/exporter/install_exporter.sh

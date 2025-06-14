@@ -1,0 +1,4 @@
+
+# defaults file for nginx
+---
+welcome_message: "Hello Devops!"
