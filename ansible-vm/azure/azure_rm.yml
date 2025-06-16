@@ -1,5 +1,0 @@
-plugin: azure.azcollection.azure_rm
-include_vm_resource_groups:
-  - your-resource-group
-auth_source: cli
-
